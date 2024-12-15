@@ -20,18 +20,18 @@
          precision)))
 
 (define (improve-guess guess x)
-  (avrg (/ x guess) guess))
+  (/ (+ (/ x (square guess)) (* 2 guess)) 3))
 
-(define (sqrter guess x)
+(define (crter guess x)
   (let ((better (improve-guess guess x)))
    (if (good-enough? guess better)
       guess
-      (sqrter better x))))
+      (crter better x))))
 
 ; get sqrt of number using Newton's Method
-(define (sqrt-this x)
+(define (crt-this x)
   (if (= x 0)
       0
-      (sqrter 1.0 x)))
+      (crter 1.0 x)))
 
-(sqrt-this 0.0001)
+(crt-this 1e-7)

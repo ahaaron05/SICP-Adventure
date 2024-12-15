@@ -1,8 +1,5 @@
 #lang scheme
 
-(define precision-threshold 0.001) ; for sqrt approximation
-(define old-guess 0.0)
-
 ; returns the absolute value
 (define (abs x)
 (cond ((> x 0) x)
@@ -16,7 +13,7 @@
   (/ (+ x y) 2))
 
 (define (good-enough? guess x)
-  (< (abs (- (square guess) x)) precision-threshold))
+  (< (abs (- (square guess) x)) 0.001))
 
 (define (improve-guess guess x)
   (avrg (/ x guess) guess))
@@ -30,4 +27,4 @@
 (define (sqrt-this x)
   (sqrter 1.0 x))
 
-(sqrt-this 0.1)
+(sqrt-this 4)

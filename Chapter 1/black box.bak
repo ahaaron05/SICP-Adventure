@@ -1,0 +1,13 @@
+#lang scheme
+
+(define (square x) (* x x))
+
+(define (abs x)
+  (if (> x 0)
+      x
+      (- x)))
+
+
+(define (sqrt x)
+  (define (good-enough? guess x)
+    (abs 
