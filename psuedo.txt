@@ -87,4 +87,109 @@ f-->A(0 n) Computes 2n.
 g-->A(1 n) Computes 2^n
 h-->A(2 n) Computes ^n2 (Tetration)
 k-->Computes 5n^2
-  					
+
+<--EXAMPLE: COUNTING CHANGE-->
+
+nWaysToChange(amount n)
+	return nWaysToChange(amount n-except-first) + nWaysToChange(amount - d n-all) 
+
+<--EXERCISE 1.11-->
+
+Recursive:
+
+f(n)
+	if n less than 3
+		return n
+	else 
+		return f(n - 1) + 2f(n - 2) + 3f(n - 3)
+
+// more efficient version
+f(n)
+	if n < 3
+		return n
+	else
+		return f(n - 1) + 2f(n - 2) + 3f(n - 3)
+
+(f 5)
+(+ (f 4) (* 2 (f 3)) (* 3 (f 2))
+(+ (f 4) (* 2 (+ (f 2) (* 2 (f 1)) (* 3 (f 0))) (* 3 2))
+(+ (f 4) (* 2 (+ (f 2) (* 2 (f 1)) (* 3 (f 0))) 6)
+(+ (f 4) (* 2 (+ (f 2) (* 2 1)) 0 6))
+(+ (f 4) (* 2 (+ 2 2) 0 6))
+(+ (f 4) (* 2 4) 0 6)
+(+ (+ (f 3) (* 2 (f 2)) (* 3 (f 1))) 8 0 6))
+(+ (+ (f 3) 4 3)) 8 0 6))
+(+ (+ (+ (f 2) (* 2 (f 1)) (* 3 (f 0)) 8 0 6))
+(+ (+ (+ (f 2) 2 0) 8 0 6)))
+(+ (+ (+ 2 2 0) 8 0 6))
+(+ (+ 4 8 0 6)))
+= 18
+
+(f 3)
+(+ (f 2) (f 1) (f 0))
+(+ 2 1 0)
+= 3
+
+(f7)
+(+ (f 6) (f 5) (f 4))
+(+ (f 6) (f 5) (+ (f 3) (f 2) (f 1)))
+(+ (f 6) (f 5) (+ 3 2 1))
+(+ (f 6) (f 5) 6)
+(+ (f 6) (+ (f 4) (f 3) (f 2)) 6))
+(+ (f 6) (+ (f 3) (f 2) (f 1) (f 3) (f 2)) 6))
+(+ (f 6) (+ 3 2 1 3 2) 6))
+(+ (f 6) 11 6))
+(+ (+ (f 5) (f 4) (f 3)) 11 6 ))
+(+ (+ (f 5) (f 3) (f 2) (f 1) 3) 11 6))
+(+ (+ (+ (f 4) (f 3) (f 2) 3 2 1 3) 11 6))
+(+ (+ (+ (+ (f 3) (f 2) (f 1) 3 2 3 2 1 3) 11 6)
+(+ (+ (+ (+ 3 2 1 3 2 3 2 1 3) 11 6))
+(+ (+ (+ 20 11 6)))
+= 37
+		
+
+Iterative:
+
+f(n)
+	if n < 3
+		n
+	else 
+		f-iter( f(0) f(1) f(2) 1))
+
+f-iter(a b c count)
+	if count > 3
+		c
+	else
+		f-iter(b c (c + 2b + 3a) count++)
+
+(f 5)
+(1 2 4 2)
+(2 4 11 3)
+(4 11 25 4)
+= 25
+		
+<--EXAMPLE 1.12-->
+
+// if check for k = 0 (INCORRECT)
+(pascal 3 3)
+(+ (pascal 2 2) (pascal 2 3))
+(+ (pascal 2 2) (+ (pascal 1 2) (pascal 1 3))
+(+ (pascal 2 2) (+ (pascal 1 2) (+ (pascal 0 2) (pascal 0 3))
+(+ (pascal 2 2) (+ (pascal 1 2) (+ 1 1))
+(+ (pascal 2 2) (+ (+ (pascal 0 1) (pascal 0 2)) 2))
+(+ (pascal 2 2) (+ (+ 1 1) 2))
+(+ (pascal 2 2) (+ 2 2))
+(+ (+ (pascal 1 1) (pascal 1 2)) 4))
+(+ (+ (+ (pascal 0 0) (pascal 0 1)) (+ (pascal 0 1) (pascal 0 2))) 4)))
+(+ (+ (+ 1 1) (+ 1 1)) 4))
+(+ (+ 2 2) 4)
+(+ 4 4)
+= 8
+
+// if check for k = n (CORRECT)
+(pascal 3 3)
+= 1, since n=k.
+		
+
+
+
