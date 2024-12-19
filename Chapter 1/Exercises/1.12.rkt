@@ -21,4 +21,4 @@
       (+ (pascal (- n 1) (- k 1))
          (pascal (- n 1) k))))
 
-(pascal 3 3)
+(pascal 1 3)
