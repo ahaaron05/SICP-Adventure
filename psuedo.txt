@@ -190,6 +190,24 @@ f-iter(a b c count)
 (pascal 3 3)
 = 1, since n=k.
 		
+<--EXERCISE 1.15-->
+
+(sine 12.15)
+(p (sine (/ 12.15 3.0))
+(p (sine 4.05)
+(p (p (sine (/ 4.05 3.0))))
+(p (p (sine 1.35)))
+(p (p (p (sine (/ 1.35 3.0))))
+(p (p (p (sine 0.45))))
+(p (p (p (p (sine (/ 0.45 3.0))))
+(p (p (p (p (sine 0.15))))
+(p (p (p (p (p (sine (/ 0.15 3.0))))))
+(p (p (p (p (p (sine 0.05))))))
+(p (p (p (p (p 0.05))))))
+(p (p (p (p (- (* 3 0.05) (* 4 (cube 0.05))))))))
+(p (p (p (p (- 0.15 0.0005)))))
+(p (p (p (p 0.1495))))
+(p (p (p (
 
 
 

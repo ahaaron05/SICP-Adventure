@@ -16,4 +16,4 @@
                        coin-types)))))
   (cc amount 5))
 
-(count-change 0)
+(count-change 11)
