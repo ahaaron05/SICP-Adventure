@@ -5,9 +5,13 @@
 (define (even? x)
   (= (remainder x 2) 0)) ; same as modulu in C
 
-(define (expt-s b n)
-  (cond ((= n 0) 1)
-        ((even? n) (square (expt-s b (/ n 2))))
-        (else (* b (expt-s b (- n 1))))))
 
-(expt-s 2 2)
+; iterative exponentiation
+(define (expt-i b n)
+  (define (iter count a b)
+    (cond ((= count 0) 1)
+          ((even? n) (iter (/ count 2) a (square b)))
+          (else (iter (- count 1) (* a b) b))))
+  (iter n 1 b))
+
+(fast-expt 2 4)

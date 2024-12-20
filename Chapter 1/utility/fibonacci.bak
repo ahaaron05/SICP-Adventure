@@ -1,6 +1,0 @@
-#lang scheme
-
-(define (Fibonacci n)
-  (cond ((= n 0) 0)
-        ((= n 1) 1)
-        (else (+ (Fibonacci (- n 1)) (Fibonacci (- n 2))))))
