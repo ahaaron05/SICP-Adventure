@@ -7,11 +7,11 @@
 
 
 ; iterative exponentiation
-(define (expt-i b n)
-  (define (iter count a b)
-    (cond ((= count 0) 1)
-          ((even? n) (iter (/ count 2) a (square b)))
-          (else (iter (- count 1) (* a b) b))))
-  (iter n 1 b))
+(define (fast-expt-i b n)
+  (define (iter a b n)
+    (cond ((= n 0) a)
+          ((even? n) (iter a (square b) (/ n 2)))
+          (else (iter (* a b) b (- n 1)))))
+  (iter 1 b n))
 
-(fast-expt 2 4)
+(fast-expt-i 3 3)
